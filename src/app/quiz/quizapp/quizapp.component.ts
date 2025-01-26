@@ -39,7 +39,7 @@ export class QuizComponent{
 
   }
   test(): void {
-    console.log(this.currentQuestionIndex);
+    console.log("Hello");
   }
 
 }
