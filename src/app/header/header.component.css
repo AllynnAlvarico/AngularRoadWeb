@@ -1,0 +1,13 @@
+.head-container {
+  @apply bg-white sticky top-0 z-50 px-4;
+}
+.lg-nav {
+  @apply hidden md:flex md:flex-grow justify-center;
+}
+.lg-ul {
+  @apply flex justify-center space-x-4;
+}
+.lg-ul a {
+  @apply font-bold text-black;
+  @apply hover:text-white hover:bg-gray-900 mx-auto px-3 rounded;
+}
