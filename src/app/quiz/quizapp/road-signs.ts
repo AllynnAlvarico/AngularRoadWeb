@@ -4,7 +4,7 @@ type RoadSigns = {
   asset_source: string;
 };
 export class RoadData {
-  path = 'assets/';
+  path = 'images/';
   getData(): RoadSigns[] {
     return [
       {category: "Road Signs", title: "Dangerous corner ahead", asset_source: this.path + "sharp-curve-to-the-left.png"},

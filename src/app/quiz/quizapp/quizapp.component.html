@@ -1,11 +1,13 @@
-<section class="mode-select">
+<section class="mode-select" *ngIf="!isClicked">
   <button id="default-mode" (click)="startQuiz(true)">Default Mode</button>
   <button id="picture-mode" (click)="startQuiz(false)">Picture Mode</button>
 </section>
 
-<section class="quiz-container" id="quiz-container">
+<section class="quiz-container" id="quiz-container" *ngIf="isClicked">
   <h2 id="quiz-heading">Question {{currentQuestionIndex}}</h2>
   <div class="question" id="question-text">What does this sign mean?</div>
+  <img ngSrc="{{imageSource}}" height="300" width="300"
+       [alt]="{altImgName}"/>
   <div class="options" id="options-container">
     <!-- Options will be dynamically added here -->
   </div>
@@ -19,7 +21,7 @@
     <p>Your Score: <span id="score">0</span></p>
   </div>
   <div id="quiz-length-container">
-    <p>Quiz<span id="lengthofquiz">0</span></p>
+    <p>Quiz <span id="lengthofquiz">{{currentQuestionIndex}}</span></p>
   </div>
   <div id="performance-tracker">
     <!-- This will display the tracker for each category -->
