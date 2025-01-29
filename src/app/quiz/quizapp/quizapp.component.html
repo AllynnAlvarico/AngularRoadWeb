@@ -5,10 +5,13 @@
 
 <section class="quiz-container" id="quiz-container" *ngIf="isClicked">
   <h2 id="quiz-heading">Question {{currentQuestionIndex}}</h2>
-  <div class="question" id="question-text">What does this sign mean?</div>
-  <img ngSrc="{{imageSource}}" height="300" width="300"
-       [alt]="{altImgName}"/>
+  <div class="question" id="question-text">{{question}}</div>
+  <img [ngSrc]="imageSource" height="300" width="300"
+       [alt]="{altImgName}"
+       *ngIf="isDefaultMode"
+  />
   <div class="options" id="options-container">
+    <button *ngFor='let option of mcqOptions'>{{option.length}}</button>
     <!-- Options will be dynamically added here -->
   </div>
 
