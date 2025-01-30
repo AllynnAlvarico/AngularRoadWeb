@@ -10,11 +10,10 @@ h1, h2 {
 }
 
 button {
-  @apply p-3 text-white;
+  @apply p-4 text-black font-bold;
   @apply bg-maincolour cursor-pointer rounded-full;
   @apply hover:bg-mainlight;
   font-size: 1em;
-  border: none;
 }
 
 .question {

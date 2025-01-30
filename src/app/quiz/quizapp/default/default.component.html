@@ -1,0 +1,14 @@
+<section class="quiz-container" id="quiz-container">
+  <h2 id="quiz-heading">Question {{currentQuestionIndex + 1}}</h2>
+  <div class="question" id="question-text">{{question}}</div>
+  <img [alt]="altImgName" [ngSrc]="imageSource" height="300" width="300"/>
+  <div class="options" id="options-container">
+    <button *ngFor="let option of mcqOptions">{{ option }}</button>
+  </div>
+
+  <div>
+    <h3>Debugging mcqOptions:</h3>
+    <pre>{{ mcqOptions | json }}</pre>
+    <pre>{{ imageSource}}</pre>
+  </div>
+</section>
