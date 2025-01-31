@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, Input, input, OnInit} from '@angular/core';
 import { RoadData } from '../road-signs';
 import { JsonPipe, NgForOf, NgIf, NgOptimizedImage } from "@angular/common";
 
@@ -15,6 +15,8 @@ import { JsonPipe, NgForOf, NgIf, NgOptimizedImage } from "@angular/common";
   styleUrl: './default.component.css'
 })
 export class DefaultComponent implements OnInit{
+  debuggerSwitch: boolean = false;
+
   mcqOptions: any[] = [];
   currentQuestionIndex = 0;
   imageSource: string = '';
@@ -25,6 +27,7 @@ export class DefaultComponent implements OnInit{
   score = 0;
   categoryTracker = {};
   quizContainer: any;
+
 
   constructor(private cdr: ChangeDetectorRef) {}
   ngOnInit(): void {
@@ -39,9 +42,8 @@ export class DefaultComponent implements OnInit{
 
     // this.mcqOptions = [];
 
-    // Shuffle and select 3 random incorrect options
     const incorrectOptions = this.shuffleArray(
-      allSigns.filter((sign: any) => sign.title !== currentSign.title) // Exclude current sign
+      allSigns.filter((sign: any) => sign.title !== currentSign.title)
     ).slice(0, 3);
 
     const finalOptions = this.shuffleArray([currentSign, ...incorrectOptions]);
@@ -51,14 +53,11 @@ export class DefaultComponent implements OnInit{
     this.currentQuestionIndex++;
 
     this.question = "What does this sign mean?"
+
     this.imageSource = currentSign.asset_source;
     this.altImgName = currentSign.title;
 
-    console.log("Hello I am default mode");
-    if (!currentSign.asset_source) {
-      console.error("Invalid image source:", currentSign);
-    }
-    this.imageSource = currentSign.asset_source || 'assets/default.png'; // Fallback image
+    // console.log(this.imageSource);
   }
 
   shuffleArray(array: any): any {

@@ -4,21 +4,4 @@
 </section>
 
 <app-default *ngIf="isClicked"></app-default>
-
-
-<section *ngIf="isClicked">
-  <div class="quiz-footer">
-    <p id="check-answer"></p>
-    <p id="correct-answer"></p>
-    <button id="next-question">Next Question</button>
-  </div>
-  <div id="score-container">
-    <p>Your Score: <span id="score">0</span></p>
-  </div>
-  <div id="quiz-length-container">
-<!--    <p>Quiz <span id="lengthofquiz">{{currentQuestionIndex}}</span></p>-->
-  </div>
-  <div id="performance-tracker">
-    <!-- This will display the tracker for each category -->
-  </div>
-</section>
+<app-score *ngIf="isClicked"></app-score>

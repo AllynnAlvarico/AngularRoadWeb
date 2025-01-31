@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {JsonPipe, NgForOf, NgIf, NgOptimizedImage} from '@angular/common';
 import {DefaultComponent} from './default/default.component';
-
+import {ScoreComponent} from './score/score.component';
 
 @Component({
   selector: 'app-quizapp',
@@ -12,13 +12,13 @@ import {DefaultComponent} from './default/default.component';
     NgForOf,
     JsonPipe,
     DefaultComponent,
+    ScoreComponent,
   ],
   templateUrl: './quizapp.component.html',
   styleUrl: './quizapp.component.css'
 })
 
 export class QuizComponent {
-
   isDefaultMode = true;
   isClicked = false;
 
