@@ -1,14 +1,14 @@
 <section class="quiz-container" id="quiz-container">
   <h1 id="quiz-heading">Question {{currentQuestionIndex}}</h1>
   <h2 class="question" id="question-text">{{question}}</h2>
-  <img [alt]="altImgName" src="{{imageSource}}"/>
+  <img [alt]="imageName" src="{{imageSource}}"/>
   <div class="options" id="options-container">
-    <button *ngFor="let option of mcqOptions">{{ option }}</button>
+    <button *ngFor="let option of mcqOptions;" (click)="processAnswer(option)">{{ option }}</button>
   </div>
 
   <div *ngIf="debuggerSwitch">
     <h3>Debugging mcqOptions:</h3>
     <pre>{{ mcqOptions | json }}</pre>
-    <pre>{{ imageSource}}</pre>
+    <pre>{{ imageSource }}</pre>
   </div>
 </section>

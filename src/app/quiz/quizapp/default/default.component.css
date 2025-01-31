@@ -12,14 +12,13 @@ h2 {
   @apply font-medium text-lg;
 }
 img {
-  @apply mx-auto;
+  @apply mx-auto mb-4;
   @apply h-60 w-60;
 }
 button {
   @apply my-1 px-4 py-2 tracking-wide w-4/5;
-  @apply text-sm text-black font-semibold uppercase;
+  @apply text-base text-black font-semibold uppercase;
   @apply rounded shadow inline-block bg-gray-100;
   @apply border-black border-2;
   @apply hover:bg-gray-400 hover:text-white;
-  font-size: 1em;
 }

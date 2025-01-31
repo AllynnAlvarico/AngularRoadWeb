@@ -2,6 +2,7 @@ import {ChangeDetectorRef, Component, Input, input, OnInit} from '@angular/core'
 import { RoadData } from '../road-signs';
 import { JsonPipe, NgForOf, NgIf, NgOptimizedImage } from "@angular/common";
 
+
 @Component({
   selector: 'app-default',
   standalone: true,
@@ -20,13 +21,11 @@ export class DefaultComponent implements OnInit{
   mcqOptions: any[] = [];
   currentQuestionIndex = 0;
   imageSource: string = '';
-  altImgName: string = '';
+  imageName: string = '';
   question: string = '';
 
   correctAnswer: any;  // Track the correct answer
-  score = 0;
-  categoryTracker = {};
-  quizContainer: any;
+  selectedAnswer: any; // Will hold the user answer
 
 
   constructor(private cdr: ChangeDetectorRef) {}
@@ -55,13 +54,24 @@ export class DefaultComponent implements OnInit{
     this.question = "What does this sign mean?"
 
     this.imageSource = currentSign.asset_source;
-    this.altImgName = currentSign.title;
+    this.imageName = currentSign.title;
 
     // console.log(this.imageSource);
+
+  }
+  processAnswer(option: string){
+    this.selectedAnswer = option;
+    if (this.selectedAnswer === this.imageName){
+      console.log("correct");
+    }
+    else {
+      console.log("incorrect");
+    }
   }
 
   shuffleArray(array: any): any {
     return array.sort(() => Math.random() - 0.5);
   }
 
+  protected readonly name = name;
 }
