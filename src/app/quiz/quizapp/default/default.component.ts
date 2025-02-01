@@ -1,7 +1,7 @@
-import {ChangeDetectorRef, Component, Input, input, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit, Output} from '@angular/core';
 import { RoadData } from '../road-signs';
 import { JsonPipe, NgForOf, NgIf, NgOptimizedImage } from "@angular/common";
-
+import {QuizComponent} from '../quizapp.component';
 
 @Component({
   selector: 'app-default',
@@ -16,7 +16,7 @@ import { JsonPipe, NgForOf, NgIf, NgOptimizedImage } from "@angular/common";
   styleUrl: './default.component.css'
 })
 export class DefaultComponent implements OnInit{
-  debuggerSwitch: boolean = false;
+  debuggerSwitch: boolean = false; /** change this for easy debugging */
 
   mcqOptions: any[] = [];
   currentQuestionIndex = 0;
@@ -24,11 +24,15 @@ export class DefaultComponent implements OnInit{
   imageName: string = '';
   question: string = '';
 
-  correctAnswer: any;  // Track the correct answer
+  value = 0;
+
   selectedAnswer: any; // Will hold the user answer
 
 
-  constructor(private cdr: ChangeDetectorRef) {}
+  constructor(
+    private cdr: ChangeDetectorRef,
+    private sharedData: QuizComponent
+  ) {}
   ngOnInit(): void {
     this.startQuiz();
   }
@@ -56,22 +60,23 @@ export class DefaultComponent implements OnInit{
     this.imageSource = currentSign.asset_source;
     this.imageName = currentSign.title;
 
-    // console.log(this.imageSource);
-
   }
   processAnswer(option: string){
     this.selectedAnswer = option;
     if (this.selectedAnswer === this.imageName){
+      this.value++;
+      this.sendScoreData();
       console.log("correct");
     }
     else {
       console.log("incorrect");
     }
   }
+  sendScoreData(){
+    return this.sharedData.updateDate(this.value);
+  }
 
   shuffleArray(array: any): any {
     return array.sort(() => Math.random() - 0.5);
   }
-
-  protected readonly name = name;
 }
