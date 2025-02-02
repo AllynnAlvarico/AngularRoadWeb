@@ -22,3 +22,9 @@ button {
   @apply border-black border-2;
   @apply hover:bg-gray-400 hover:text-white;
 }
+.correct {
+  @apply bg-green-700 text-white;
+}
+.incorrect {
+  @apply bg-red-600 text-white;
+}

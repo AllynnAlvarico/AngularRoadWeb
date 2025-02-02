@@ -3,7 +3,14 @@
   <h2 class="question" id="question-text">{{question}}</h2>
   <img [alt]="imageName" src="{{imageSource}}"/>
   <div class="options" id="options-container">
-    <button *ngFor="let option of mcqOptions;" (click)="processAnswer(option)">{{ option }}</button>
+    <button
+      *ngFor="let option of mcqOptions;"
+      (click)="processAnswer(option)"
+      [ngClass]="{
+        'correct': selectedAnswer !== null && option === correctAnswer,
+        'incorrect': selectedAnswer !== null && option !== correctAnswer
+      }"
+      [disabled]="selectedAnswer">{{ option }}</button>
   </div>
 
   <div *ngIf="debuggerSwitch">

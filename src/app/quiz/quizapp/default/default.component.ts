@@ -1,17 +1,18 @@
 import {ChangeDetectorRef, Component, OnInit, Output} from '@angular/core';
 import { RoadData } from '../road-signs';
-import { JsonPipe, NgForOf, NgIf, NgOptimizedImage } from "@angular/common";
+import {JsonPipe, NgClass, NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
 import {QuizComponent} from '../quizapp.component';
 
 @Component({
   selector: 'app-default',
   standalone: true,
-    imports: [
-        JsonPipe,
-        NgForOf,
-        NgIf,
-        NgOptimizedImage
-    ],
+  imports: [
+    JsonPipe,
+    NgForOf,
+    NgIf,
+    NgOptimizedImage,
+    NgClass
+  ],
   templateUrl: './default.component.html',
   styleUrl: './default.component.css'
 })
@@ -25,9 +26,8 @@ export class DefaultComponent implements OnInit{
   question: string = '';
 
   value = 0;
-
-  selectedAnswer: any; // Will hold the user answer
-
+  selectedAnswer: string | null = null; // Will hold the user answer
+  correctAnswer: string = '';
 
   constructor(
     private cdr: ChangeDetectorRef,
@@ -51,8 +51,8 @@ export class DefaultComponent implements OnInit{
 
     const finalOptions = this.shuffleArray([currentSign, ...incorrectOptions]);
     this.mcqOptions = finalOptions.map((option:any) => option.title);
-    this.cdr.detectChanges();
 
+    this.correctAnswer = currentSign.title;
     this.currentQuestionIndex++;
 
     this.question = "What does this sign mean?"
@@ -61,15 +61,14 @@ export class DefaultComponent implements OnInit{
     this.imageName = currentSign.title;
 
   }
-  processAnswer(option: string){
-    this.selectedAnswer = option;
-    if (this.selectedAnswer === this.imageName){
+  processAnswer(selected: string) {
+    if (this.selectedAnswer !== null) return;
+    this.selectedAnswer = selected;
+
+    if (this.selectedAnswer === this.imageName) {
       this.value++;
       this.sendScoreData();
       console.log("correct");
-    }
-    else {
-      console.log("incorrect");
     }
   }
   sendScoreData(){
