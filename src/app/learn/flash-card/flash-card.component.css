@@ -1,0 +1,26 @@
+.flash-container {
+  /*gallery*/
+  width: 750px;
+  @apply border-2 border-black rounded-3xl mx-auto m-5 bg-white;
+}
+.flash-header {
+  /*top*/
+  @apply flex p-2 border-b select-none;
+}
+.flash-header-line {
+  /*heading*/
+  @apply text-gray-800 w-full pl-3 font-semibold my-auto;
+}
+.flash-button-container {
+  /*buttons*/
+  @apply ml-auto flex text-gray-600 mr-1;
+}
+button {
+  @apply w-8 h-8 border-2 p-1 cursor-pointer;
+}
+.button-left {
+  @apply rounded-l-lg border-r-0;
+}
+button-right {
+  @apply rounded-r-lg;
+}
