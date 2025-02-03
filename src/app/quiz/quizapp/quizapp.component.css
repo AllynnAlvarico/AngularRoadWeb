@@ -3,14 +3,13 @@ h1, h2 {
 }
 
 .mode-select {
-  display: flex;
-  justify-content: center;
+  @apply flex justify-center;
   gap: 1em;
   margin-bottom: 2em;
 }
 
 button {
-  @apply p-4 text-black font-bold;
+  @apply p-3 text-white font-bold;
   @apply bg-maincolour cursor-pointer rounded-full;
   @apply hover:bg-mainlight;
   font-size: 1em;

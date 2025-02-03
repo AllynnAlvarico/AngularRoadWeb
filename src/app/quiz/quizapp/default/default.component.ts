@@ -1,81 +1,73 @@
-import {ChangeDetectorRef, Component, OnInit, Output} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RoadData } from '../road-signs';
-import {JsonPipe, NgClass, NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
-import {QuizComponent} from '../quizapp.component';
+import { JsonPipe, NgClass, NgForOf, NgIf, NgOptimizedImage } from "@angular/common";
+import { QuizComponent } from '../quizapp.component';
 
 @Component({
   selector: 'app-default',
   standalone: true,
-  imports: [
-    JsonPipe,
-    NgForOf,
-    NgIf,
-    NgOptimizedImage,
-    NgClass
-  ],
+  imports: [JsonPipe, NgForOf, NgIf, NgOptimizedImage, NgClass],
   templateUrl: './default.component.html',
   styleUrl: './default.component.css'
 })
-export class DefaultComponent implements OnInit{
-  debuggerSwitch: boolean = false; /** change this for easy debugging */
+export class DefaultComponent implements OnInit {
+  /** Debugging switch */
+  debuggerSwitch: boolean = false;
 
-  mcqOptions: any[] = [];
+  /** Quiz properties */
+  mcqOptions: string[] = [];
   currentQuestionIndex = 0;
   imageSource: string = '';
   imageName: string = '';
-  question: string = '';
+  question: string = 'What does this sign mean?';
 
-  value = 0;
-  selectedAnswer: string | null = null; // Will hold the user answer
+  /** Answer tracking */
+  selectedAnswer: string | null = null;
   correctAnswer: string = '';
+  score = 0;
 
-  constructor(
-    private cdr: ChangeDetectorRef,
-    private sharedData: QuizComponent
-  ) {}
+  constructor(private sharedData: QuizComponent) {}
+
   ngOnInit(): void {
     this.startQuiz();
   }
 
-  startQuiz(){
-
-    const roadData: RoadData = new RoadData();
+  startQuiz(): void {
+    const roadData = new RoadData();
     const allSigns = roadData.getData();
     const currentSign = allSigns[this.currentQuestionIndex];
 
-    // this.mcqOptions = [];
-
     const incorrectOptions = this.shuffleArray(
-      allSigns.filter((sign: any) => sign.title !== currentSign.title)
+      allSigns.filter(sign => sign.title !== currentSign.title)
     ).slice(0, 3);
 
-    const finalOptions = this.shuffleArray([currentSign, ...incorrectOptions]);
-    this.mcqOptions = finalOptions.map((option:any) => option.title);
+    this.mcqOptions = this.shuffleArray([currentSign, ...incorrectOptions])
+      .map(option => option.title);
 
     this.correctAnswer = currentSign.title;
-    this.currentQuestionIndex++;
-
-    this.question = "What does this sign mean?"
-
     this.imageSource = currentSign.asset_source;
     this.imageName = currentSign.title;
 
+    this.currentQuestionIndex++;
   }
-  processAnswer(selected: string) {
-    if (this.selectedAnswer !== null) return;
+
+  processAnswer(selected: string): void {
+    if (this.selectedAnswer) return;
+
     this.selectedAnswer = selected;
 
-    if (this.selectedAnswer === this.imageName) {
-      this.value++;
+    if (this.selectedAnswer === this.correctAnswer) {
+      this.score++;
       this.sendScoreData();
-      console.log("correct");
+      console.log("Correct answer!");
     }
   }
-  sendScoreData(){
-    return this.sharedData.updateDate(this.value);
+
+  sendScoreData(): void {
+    this.sharedData.updateDate(this.score);
   }
 
-  shuffleArray(array: any): any {
+  private shuffleArray<T>(array: T[]): T[] {
     return array.sort(() => Math.random() - 0.5);
   }
 }

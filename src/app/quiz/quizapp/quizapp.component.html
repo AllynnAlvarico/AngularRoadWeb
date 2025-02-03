@@ -3,5 +3,8 @@
   <button id="picture-mode" (click)="startQuiz(false)">Picture Mode</button>
 </section>
 
-<app-default *ngIf="isClicked"></app-default>
-<app-score *ngIf="isClicked"></app-score>
+<div class="flex flex-row justify-center my-4 gap-9">
+  <app-default *ngIf="isClicked"></app-default>
+  <app-score *ngIf="isClicked"></app-score>
+</div>
+

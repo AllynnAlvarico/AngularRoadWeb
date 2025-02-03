@@ -1,0 +1,8 @@
+section {
+  @apply border-2 border-black rounded p-2;
+  @apply flex flex-col justify-evenly gap-10;
+}
+button {
+  @apply bg-green-700 p-5 rounded-md text-white font-bold;
+  @apply hover:bg-green-400 hover:text-black;
+}
