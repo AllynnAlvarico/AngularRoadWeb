@@ -1,0 +1,19 @@
+<div #modalRef class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center" *ngIf="openModal">
+  <section>
+    <header>
+      <h2>{{headTitle}}</h2>
+      <button (click)="closeModal()" class="headBtnClose">&times;</button>
+    </header>
+    <article>
+      <h3>{{ subheader }}</h3>
+      <p>{{ para1 }}</p>
+      <p>{{ para2 }}</p>
+      <p>{{ para3 }}</p>
+      <p>{{ message }}</p>
+      <a href="https://allynnalvarico.github.io/RoadSignQuizWeb.io/" target="_blank">Here is the Link!</a>
+    </article>
+    <div class="border-t p-4">
+      <button (click)="closeModal()" class="btnClose">Close</button>
+    </div>
+  </section>
+</div>

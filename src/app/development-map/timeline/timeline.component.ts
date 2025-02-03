@@ -1,21 +1,27 @@
 import { Component } from '@angular/core';
 import {RouterLink} from '@angular/router';
-import {NgIf} from '@angular/common';
+import {NgClass, NgIf} from '@angular/common';
+import {ModalComponentComponent} from '../modal-component/modal-component.component';
+import { ModalService } from '../service/modal.service';
+
 
 @Component({
   selector: 'app-timeline',
   standalone: true,
   imports: [
     RouterLink,
-    NgIf
+    NgIf,
+    NgClass,
+    ModalComponentComponent
   ],
   templateUrl: './timeline.component.html',
   styleUrl: './timeline.component.css'
 })
 export class TimelineComponent {
-  openModal: boolean = false;
+  constructor(private modalService: ModalService) {}
 
-  modalAction(choice:boolean){
-    this.openModal = choice;
+  openModal() {
+    this.modalService.openModal();
+    // Call the service function to open the modal
   }
 }

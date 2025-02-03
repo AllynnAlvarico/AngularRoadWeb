@@ -22,7 +22,7 @@
         maybe if I built an interactive platform while practicing programming,
         I could absorb the information better and make the process more enjoyable.
       </p>
-      <button (click)="modalAction(true)">Read more</button>
+      <button (click)="openModal()">Read more</button>
     </article>
   </li>
 
@@ -82,4 +82,4 @@
 <!--    </article>-->
 <!--  </li>-->
 </ol>
-<div *ngIf="openModal"> </div>
+<app-modal-component *ngIf="openModal"></app-modal-component>
