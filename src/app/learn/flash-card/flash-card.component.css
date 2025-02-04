@@ -16,11 +16,26 @@
   @apply ml-auto flex text-gray-600 mr-1;
 }
 button {
-  @apply w-8 h-8 border-2 p-1 cursor-pointer;
+  /*border-2*/
+  @apply w-8 h-8  p-1 cursor-pointer;
 }
 .button-left {
   @apply rounded-l-lg border-r-0;
 }
 button-right {
   @apply rounded-r-lg;
+}
+.content-area {
+  @apply  w-full h-96 overflow-hidden;
+}
+.platform {
+  @apply shadow-xl h-full flex;
+}
+.each-frame {
+  @apply flex-none h-full;
+}
+
+
+.flash-image {
+  @apply border-8 w-full p-8;
 }
