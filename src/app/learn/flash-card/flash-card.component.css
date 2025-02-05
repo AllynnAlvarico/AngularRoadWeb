@@ -29,13 +29,13 @@ button-right {
   @apply  w-full h-96 overflow-hidden;
 }
 .platform {
-  @apply shadow-xl h-full flex;
+  @apply shadow-xl h-full flex justify-evenly;
 }
-.each-frame {
-  @apply flex-none h-full;
+.header-frame-title {
+  @apply h-full text-center text-3xl font-bold;
 }
-
-
 .flash-image {
-  @apply border-8 w-full p-8;
+  height: 300px;
+  width: 300px;
+  @apply border-8 w-full p-8 my-5;
 }

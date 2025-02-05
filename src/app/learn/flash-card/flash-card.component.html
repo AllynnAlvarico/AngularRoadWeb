@@ -4,12 +4,12 @@
   <div class="flash-header">
     <div class="flash-header-line"></div>
     <div class="flash-button-container">
-      <button class="button-left">
+      <button (click)="prev()" class="button-left">
         <img width="48" height="48"
              src="https://img.icons8.com/color/48/circled-left--v1.png"
              alt="circled-left--v1"/>
       </button>
-      <button class="button-right">
+      <button (click)="next()" class="button-right">
         <img width="48" height="48"
              src="https://img.icons8.com/color/48/circled-right--v1.png"
              alt="circled-right--v1"/>
@@ -18,88 +18,17 @@
   </div>
 
   <div class="content-area">
-    <div class="platform ">
-      <!-- frame start -->
-      <div class="each-frame " title="Tiger">
-        <!-- title shows in top -->
-        <!-- this is full editable area -->
-        <div class="main flex w-full p-8">
-          <div class="sub w-4/6 my-auto">
-            <img class="flash-image" src="https://images-na.ssl-images-amazon.com/images/I/81eJpEEQwYL._AC_SL1500_.jpg" alt="">
-          </div>
-          <div class="w-full my-auto">
-            <div class="head text-3xl font-bold mb-4">The Tiger</div>
-            <div class="long-text text-lg">(Panthera tigris) is the largest extant cat species and a member of the genus
-              Panthera. It is most recognisable for its dark vertical stripes on orange-brown fur with a lighter
-              underside. It is an apex predator, primarily preying on ungulates such as deer and wild boar.</div>
-            <!-- this buttons are usable everywhere inside gallery element -->
-            <div
-              class="goto border border-gray-400 text-sm font-semibold inline-block mt-2 p-1 px-2 rounded cursor-pointer"
-              action="goto" goto="2">Goto Third Frame</div>
-            <!-- add (action="goto" goto="[val]{0 means first frame and so on}") attribute to jump into frames -->
-            <div
-              class="goto border border-gray-400 text-sm font-semibold inline-block mt-2 p-1 px-2 rounded cursor-pointer"
-              action="goto" goto="end">Goto Last Frame</div>
-          </div>
-        </div>
+    <div class="platform">
+      <div>
+        <img class="flash-image" src="{{imageSource}}" alt="{{imageName}}">
       </div>
-      <!-- frame end -->
-
-      <div class="each-frame border-box flex-none h-full" title="Lion">
-        <!-- title shows in top -->
-        <!-- this is full editable area -->
-        <div class="main flex w-full p-8">
-          <div class="sub w-4/6 my-auto">
-            <img class="w-full p-8" src="https://image.freepik.com/free-vector/cute-lion-cartoon_160606-353.jpg" alt="">
-          </div>
-          <div class="sub w-full my-auto">
-            <div class="head text-3xl font-bold mb-4">The Lion</div>
-            <div class="long-text text-lg">The lion is a species in the family Felidae and a member of the genus
-              Panthera. It has a muscular, deep-chested body, short, rounded head, round ears, and a hairy tuft at the
-              end of its tail. It is sexually dimorphic; adult male lions have a prominent mane.</div>
-          </div>
-        </div>
+      <div class="flex flex-col my-auto">
+        <h1 class="text-center text-3xl">This sign is </h1>
+        <h2 class="header-frame-title">{{imageName}}</h2>
+        <h3 class="text-lg text-center font-medium my-5">Category: {{category}}</h3>
       </div>
-      <!-- frame end -->
-
-      <div class="each-frame border-box flex-none h-full" title="Rat">
-        <!-- title shows in top -->
-        <!-- this is full editable area -->
-        <div class="main flex w-full p-8">
-          <div class="sub w-4/6 my-auto">
-            <img class="w-full p-8" src="https://i.pinimg.com/originals/07/1d/d0/071dd09d7b36e49139fe2cf08ff728a8.jpg" alt="">
-          </div>
-          <div class="sub w-full my-auto">
-            <div class="head text-3xl font-bold mb-4">The Rat</div>
-            <div class="long-text text-lg">Rats are various medium-sized, long-tailed rodents. Species of rats are found
-              throughout the order Rodentia, but stereotypical rats are found in the genus Rattus. Other rat genera
-              include Neotoma, Bandicota and Dipodomys. Rats are typically distinguished from</div>
-          </div>
-        </div>
-      </div>
-      <!-- frame end -->
-
-      <div class="each-frame border-box flex-none h-full" title="Owl">
-        <!-- title shows in top -->
-        <!-- this is full editable area -->
-        <div class="main flex w-full p-8">
-          <div class="sub w-4/6 my-auto">
-            <img class="w-full p-8" src="https://image.freepik.com/free-vector/cartoon-owl-tree-branch_194935-43.jpg" alt="">
-          </div>
-          <div class="sub w-full my-auto">
-            <div class="head text-3xl font-bold mb-4">The Owl</div>
-            <div class="long-text text-lg">Owls are birds from the order Strigiformes, which includes over 200 species
-              of mostly solitary and nocturnal birds of prey typified by an upright stance, a large, broad head,
-              binocular vision, binaural hearing, sharp talons, and feathers adapted for silent flight.</div>
-            <div
-              class="goto border border-gray-400 text-sm font-semibold inline-block mt-2 p-1 px-2 rounded cursor-pointer"
-              action="goto" goto="0">Goto First Frame</div>
-          </div>
-        </div>
-      </div>
-      <!-- frame end -->
-
 
     </div>
+    <h3 class="text-center -m-10"> {{currentIndex}}/{{allSigns.length}}</h3>
   </div>
 </div>
