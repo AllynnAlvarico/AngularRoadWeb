@@ -13,4 +13,6 @@ import {RouterLink, RouterLinkActive} from "@angular/router";
 })
 export class FlashCardComponent {
 
+  constructor(private sharedData: ShareData) {
+  }
 }

@@ -54,7 +54,5 @@ export class ModalComponentComponent implements OnInit {
       "So, I immediately started coding. What was supposed to be a quick evening project turned into a full-on coding spree. Over the next two days, I spent around 20 hours building the foundation of the site. I barely stopped for breaks, getting completely absorbed in the process. By the time I finished, I had a rough version of my site — and despite its imperfections, I was proud. It was a beginner’s project, but it was mine, and I had learned a lot along the way."
     this.message =
       "I’ll admit, I may have burned myself out a bit — coding like a madman for 20 hours straight isn’t exactly sustainable! But the feeling of turning something boring into a fun and productive project was totally worth it. Now, I’m excited to refine the site and keep learning."
-
   }
-
 }
