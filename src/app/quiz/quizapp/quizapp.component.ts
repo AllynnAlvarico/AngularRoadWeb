@@ -5,6 +5,7 @@ import { BehaviorSubject } from 'rxjs';
 import {JsonPipe, NgForOf, NgIf, NgOptimizedImage} from '@angular/common';
 import {DefaultComponent} from './default/default.component';
 import {ScoreComponent} from './score/score.component';
+import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-quizapp',
@@ -16,6 +17,7 @@ import {ScoreComponent} from './score/score.component';
     JsonPipe,
     DefaultComponent,
     ScoreComponent,
+    RouterLink,
   ],
   templateUrl: './quizapp.component.html',
   styleUrl: './quizapp.component.css'
