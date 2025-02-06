@@ -1,15 +1,14 @@
 <h2 class="text-xl font-bold m-5 text-center">Use Keyboard Arrow Keys To Go Left And Right</h2>
-
 <div class="flash-container">
   <div class="flash-header">
     <div class="flash-header-line"></div>
-    <div class="flash-button-container">
-      <button (click)="prev()" class="button-left">
+    <div class="flash-button-container" (keyup.arrowLeft)="prev()" (keyup.arrowRight)="next()">
+      <button (click)="prev()"  class="button-left">
         <img width="48" height="48"
              src="https://img.icons8.com/color/48/circled-left--v1.png"
              alt="circled-left--v1"/>
       </button>
-      <button (click)="next()" class="button-right">
+      <button (click)="next()"  class="button-right">
         <img width="48" height="48"
              src="https://img.icons8.com/color/48/circled-right--v1.png"
              alt="circled-right--v1"/>
@@ -19,16 +18,15 @@
 
   <div class="content-area">
     <div class="platform">
-      <div>
+      <div class="image-placeholder">
         <img class="flash-image" src="{{imageSource}}" alt="{{imageName}}">
       </div>
-      <div class="flex flex-col my-auto">
-        <h1 class="text-center text-3xl">This sign is </h1>
+      <div class="flex flex-col my-auto w-1/2 flex-wrap">
+        <h1 class="text-center text-3xl">This Road Sign is </h1>
         <h2 class="header-frame-title">{{imageName}}</h2>
         <h3 class="text-lg text-center font-medium my-5">Category: {{category}}</h3>
       </div>
-
     </div>
-    <h3 class="text-center -m-10"> {{currentIndex}}/{{allSigns.length}}</h3>
+    <h3 class="border-t-2 border-gray-400 text-right pr-20 text-lg font-semibold py-2 bg-white rounded-b-3xl"> {{currentIndex+1}}/{{allSigns.length}}</h3>
   </div>
 </div>

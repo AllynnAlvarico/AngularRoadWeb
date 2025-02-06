@@ -30,7 +30,7 @@ export class FlashCardComponent implements OnInit {
 
     this.imageSource = currentSign.asset_source;
     this.imageName = currentSign.title;
-    this.category = currentSign.title;
+    this.category = currentSign.category;
   }
   next(){
     this.currentIndex++;

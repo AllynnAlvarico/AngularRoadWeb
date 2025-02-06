@@ -26,10 +26,13 @@ button-right {
   @apply rounded-r-lg;
 }
 .content-area {
-  @apply  w-full h-96 overflow-hidden;
+  @apply  w-full h-full  overflow-hidden;
 }
 .platform {
   @apply shadow-xl h-full flex justify-evenly;
+}
+.image-placeholder {
+  @apply my-auto mx-auto bg-white;
 }
 .header-frame-title {
   @apply h-full text-center text-3xl font-bold;
@@ -37,5 +40,5 @@ button-right {
 .flash-image {
   height: 300px;
   width: 300px;
-  @apply border-8 w-full p-8 my-5;
+  @apply border-8 w-full p-8 my-5 rounded-3xl border-black;
 }
