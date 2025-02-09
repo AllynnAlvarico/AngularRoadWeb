@@ -4,13 +4,15 @@ import { HomeComponent } from './home/home.component';
 import { QuizComponent} from './quiz/quizapp/quizapp.component';
 import {TimelineComponent} from './development-map/timeline/timeline.component';
 import {LearnComponent} from './learn/learn.component';
+import {ContactComponent} from './contact/contact.component';
 
 export const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'home', component: HomeComponent},
   {path: 'quiz', component: QuizComponent},
   {path: 'learn', component: LearnComponent},
-  {path: 'timeline', component: TimelineComponent}
+  {path: 'timeline', component: TimelineComponent},
+  {path: 'contact', component: ContactComponent}
 ];
 const routerOptions : ExtraOptions = {
   scrollPositionRestoration: 'enabled',

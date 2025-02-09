@@ -8,6 +8,9 @@
   @apply flex justify-center space-x-4;
 }
 .lg-ul a {
-  @apply font-bold text-black;
+  @apply font-bold;
   @apply hover:text-white hover:bg-gray-900 mx-auto px-3 rounded;
+}
+.active {
+  @apply bg-green-700 p-2 text-white;
 }
