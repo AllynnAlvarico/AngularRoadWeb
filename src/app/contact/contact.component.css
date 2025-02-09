@@ -1,0 +1,74 @@
+section {
+  @apply bg-mainlight dark:bg-slate-800;
+}
+h2 {
+  @apply mb-4 font-bold tracking-tight text-maintone dark:text-white text-3xl sm:text-5xl;
+}
+article {
+  @apply h-full pr-6;
+}
+.contact-container {
+  @apply max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20;
+}
+.contact-head-frame {
+  @apply mb-4;
+}
+.contact-header {
+  @apply mb-6 max-w-3xl text-center sm:text-center md:mx-auto md:mb-12;
+}
+.head-text {
+  @apply text-lg font-semibold uppercase tracking-wide dark:text-blue-200;
+}
+.sub-title {
+  @apply mt-4 max-w-3xl text-xl dark:text-slate-400 animate-bounce;
+}
+.contact-content {
+  @apply items-stretch justify-center;
+}
+.article-text {
+  @apply mt-3 mb-12 text-lg dark:text-slate-400
+}
+.contact-container, .sub-title {
+  @apply mx-auto;
+}
+h3 , p, strong, em, .article-text, .head-text, .sub-title {
+  @apply text-white;
+}
+h3 {
+  @apply mb-2 text-2xl leading-6 dark:text-white font-extrabold;
+  letter-spacing: .3em;
+}
+ul {
+  @apply mb-6 md:mb-0;
+}
+li, .icon , .contact-content {
+  @apply flex;
+}
+.icon {
+  @apply h-10 w-10 items-center justify-center rounded bg-white text-gray-50 my-4;
+}
+ul+p {
+  @apply text-gray-600 dark:text-slate-400;
+}
+.text-content-frame {
+  @apply ml-10 mb-6;
+}
+.link-container {
+  @apply flex flex-row justify-evenly gap-x-10;
+}
+.links {
+  @apply flex flex-col justify-center gap-1;
+}
+.links svg {
+  @apply mx-auto bg-white rounded;
+}
+.email-container {
+  @apply flex flex-col justify-evenly gap-2;
+}
+.email-container strong {
+  letter-spacing: .2em;
+}
+.email-container p {
+  @apply mx-5 tracking-widest underline;
+}
+
