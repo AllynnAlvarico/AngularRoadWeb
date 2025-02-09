@@ -1,0 +1,39 @@
+section, .information-container, .col-info-frame, .btn-container {
+  @apply flex;
+}
+
+section, ul, .information-container {
+  @apply w-full;
+}
+
+section, .information-container, col-info-frame {
+  @apply flex-col;
+}
+
+section {
+  @apply lg:flex-row gap-6 sm:gap-4 lg:gap-6 justify-between;
+}
+
+.information-container {
+  @apply items-stretch gap-4;
+}
+
+.col-info-frame {
+  width: 40em;
+  @apply sm:flex-row gap-2 md:gap-6 items-center justify-between font-serif;
+}
+
+ul {
+  @apply text-gray-900 dark:text-gray-200;
+}
+
+li {
+  @apply py-2 border-b border-gray-200 dark:border-gray-600;
+}
+
+span {
+  @apply font-bold;
+}
+.btn-container {
+  @apply  gap-4 justify-center sm:justify-start mb-10;
+}

@@ -1,0 +1,15 @@
+section {
+  width: 30em;
+}
+.stat-container {
+  @apply flex flex-col gap-2;
+}
+progress-bar-header {
+  @apply w-full flex justify-between font-semibold;
+}
+.progress-bar {
+  @apply w-full bg-gray-300 rounded-full;
+}
+.progress-bar-fill {
+  @apply h-2 bg-blue-500 rounded-full;
+}
