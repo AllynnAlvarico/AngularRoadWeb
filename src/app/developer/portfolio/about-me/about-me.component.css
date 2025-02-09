@@ -1,0 +1,7 @@
+.about-me-container {
+  @apply flex flex-col gap-5;
+  @apply w-4/5 tracking-widest leading-6;
+}
+em {
+  @apply font-bold
+}

@@ -5,6 +5,7 @@ import { QuizComponent} from './quiz/quizapp/quizapp.component';
 import {TimelineComponent} from './development-map/timeline/timeline.component';
 import {LearnComponent} from './learn/learn.component';
 import {ContactComponent} from './contact/contact.component';
+import {PortfolioComponent} from './developer/portfolio/portfolio.component';
 
 export const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -12,6 +13,7 @@ export const routes: Routes = [
   {path: 'quiz', component: QuizComponent},
   {path: 'learn', component: LearnComponent},
   {path: 'timeline', component: TimelineComponent},
+  {path: 'portfolio', component: PortfolioComponent},
   {path: 'contact', component: ContactComponent}
 ];
 const routerOptions : ExtraOptions = {
