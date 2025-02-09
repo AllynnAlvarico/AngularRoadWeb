@@ -35,7 +35,7 @@ button-right {
   @apply my-auto mx-auto bg-white;
 }
 .header-frame-title {
-  @apply h-full text-center text-3xl font-bold;
+  @apply h-full text-center text-3xl font-bold mx-8 text-wrap;
 }
 .flash-image {
   height: 300px;
