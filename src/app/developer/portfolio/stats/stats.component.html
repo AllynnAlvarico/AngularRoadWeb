@@ -64,32 +64,64 @@
   <h1 class="text-3xl mx-20 font-medium text-maintone tracking-widest">Course</h1>
   <article>
     <div>
-      <h2>Software Developer FETAC 5 <button (click)="clickedFetac(true)">See More</button></h2>
+      <h2 class="flex justify-evenly">
+        Software Developer FETAC 5
+        <button *ngIf="!isClickedFetac" (click)="clickedFetac(true)">See More</button>
+        <button *ngIf="isClickedFetac" (click)="clickedFetac(false)">See Less</button>
+      </h2>
+      <div class="w-4/5 my-2">
+        <!-- Progress bar -->
+        <div class="progress-bar">
+          <div class="progress-bar-fill w-[80%]">
+            Average: 80 %
+          </div>
+        </div>
+      </div>
+
     </div>
     <ul *ngIf="isClickedFetac">
       <li *ngFor="let course of coursesFetac">
-        <div>
-          <h3>{{course}}</h3>
-          <h4>{{fetacGrade}}</h4>
+        <div class="text-center">
+          <h3 class="font-bold">{{ course }}</h3>
+          <h4 class="font-medium ">Grade: {{ fetacGrade }}</h4>
         </div>
       </li>
     </ul>
-    <button *ngIf="isClickedFetac" (click)="clickedFetac(false)">See Less</button>
+
   </article>
 
   <article>
     <div>
-      <h2>Business Computing 1st Year <button (click)="Clicked1stYear(true)">See More</button></h2>
+      <h2 class="flex justify-evenly">
+        Business Computing 1st Year
+        <button *ngIf="!isClicked1stYear" (click)="Clicked1stYear(true)">See More</button>
+        <button *ngIf="isClicked1stYear" (click)="Clicked1stYear(false)">See Less</button>
+      </h2>
+      <div class="w-4/5 my-2">
+        <!-- Progress bar -->
+        <div class="progress-bar">
+          <div class="progress-bar-fill w-[77%]">
+            Average: 77 %
+          </div>
+        </div>
+      </div>
     </div>
     <ul *ngIf="isClicked1stYear">
       <li *ngFor="let course of bc1stYear; let i=index">
         <div>
-          <h3>{{course}}</h3>
-          <h4 >{{bcOneGrades[i].num}}</h4>
+          <h3>{{ course }}</h3>
+          <div class="w-4/5 my-2">
+            <!-- Progress bar -->
+            <div class="progress-bar">
+              <div class="progress-bar-fill w-[{{bcOneGrades[i].num}}%]" >
+                Grade: {{bcOneGrades[i].num}}%
+              </div>
+            </div>
+          </div>
         </div>
       </li>
     </ul>
-    <button *ngIf="isClicked1stYear" (click)="Clicked1stYear(false)">See Less</button>
+
   </article>
 
 </section>

@@ -8,14 +8,14 @@ progress-bar-header {
   @apply w-full flex justify-between font-semibold;
 }
 .progress-bar {
-  @apply w-full bg-gray-300 rounded-full;
+  @apply w-full bg-gray-300 rounded-full h-4;
 }
 .progress-bar-fill {
-  @apply h-2 bg-blue-500 rounded-full;
+  @apply h-4 bg-blue-500 rounded-full text-center text-xs text-white ;
 }
 
 article {
-  @apply my-3;
+  @apply my-3 border-black border-2;
 }
 
 h2 {

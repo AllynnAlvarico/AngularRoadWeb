@@ -54,4 +54,5 @@ export class StatsComponent {
     this.isClicked1stYear = state;
   }
 
+  protected readonly console = console;
 }
