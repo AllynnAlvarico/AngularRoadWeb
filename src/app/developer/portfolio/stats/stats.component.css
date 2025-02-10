@@ -13,3 +13,14 @@ progress-bar-header {
 .progress-bar-fill {
   @apply h-2 bg-blue-500 rounded-full;
 }
+
+article {
+  @apply my-3;
+}
+
+h2 {
+  @apply text-lg font-bold;
+}
+button {
+  @apply bg-blue-600 rounded-2xl text-white font-bold p-1.5 text-sm;
+}

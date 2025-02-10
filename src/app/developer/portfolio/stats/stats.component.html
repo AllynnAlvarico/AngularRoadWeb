@@ -1,63 +1,96 @@
-<section class="w-full flex flex-col gap-2">
-  <!-- Progress bar 1 -->
-  <div class="stat-container">
-    <div class="w-full flex justify-between font-semibold">
-      <span>WordPress</span>
-      <span>92 %</span>
-    </div>
-    <!-- Progress bar -->
-    <div class="progress-bar">
-      <div class="progress-bar-fill w-[{{92}}%]">
-      </div>
-    </div>
-  </div>
+<!--<section class="w-full flex flex-col gap-2">-->
+<!--  &lt;!&ndash; Progress bar 1 &ndash;&gt;-->
+<!--  <div class="stat-container">-->
+<!--    <div class="w-full flex justify-between font-semibold">-->
+<!--      <span>WordPress</span>-->
+<!--      <span>92 %</span>-->
+<!--    </div>-->
+<!--    &lt;!&ndash; Progress bar &ndash;&gt;-->
+<!--    <div class="progress-bar">-->
+<!--      <div class="progress-bar-fill w-[92%]">-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
 
-  <!-- Progress bar 2 -->
-  <div class="stat-container">
-    <div class="progress-bar-header">
-      <span>HTML/CSS/Javascript</span>
-      <span>90 %</span>
-    </div>
-    <!-- Progress bar -->
-    <div class="progress-bar">
-      <div class="progress-bar-fill w-[90%]"></div>
-    </div>
-  </div>
+<!--  &lt;!&ndash; Progress bar 2 &ndash;&gt;-->
+<!--  <div class="stat-container">-->
+<!--    <div class="progress-bar-header">-->
+<!--      <span>HTML/CSS/Javascript</span>-->
+<!--      <span>90 %</span>-->
+<!--    </div>-->
+<!--    &lt;!&ndash; Progress bar &ndash;&gt;-->
+<!--    <div class="progress-bar">-->
+<!--      <div class="progress-bar-fill w-[90%]"></div>-->
+<!--    </div>-->
+<!--  </div>-->
 
-  <!-- Progress bar 3 -->
-  <div class="stat-container">
-    <div class="progress-bar-header">
-      <span>PHP/Laravel</span>
-      <span>80 %</span>
-    </div>
-    <!-- Progress bar -->
-    <div class="progress-bar">
-      <div class="progress-bar-fill w-[80%]"></div>
-    </div>
-  </div>
+<!--  &lt;!&ndash; Progress bar 3 &ndash;&gt;-->
+<!--  <div class="stat-container">-->
+<!--    <div class="progress-bar-header">-->
+<!--      <span>PHP/Laravel</span>-->
+<!--      <span>80 %</span>-->
+<!--    </div>-->
+<!--    &lt;!&ndash; Progress bar &ndash;&gt;-->
+<!--    <div class="progress-bar">-->
+<!--      <div class="progress-bar-fill w-[80%]"></div>-->
+<!--    </div>-->
+<!--  </div>-->
 
-  <!-- Progress bar 4 -->
-  <div class="stat-container">
-    <div class="progress-bar-header">
-      <span>Vue/Nuxt</span>
-      <span>85 %</span>
-    </div>
-    <!-- Progress bar -->
-    <div class="progress-bar">
-      <div class="progress-bar-fill w-[85%]"></div>
-    </div>
-  </div>
+<!--  &lt;!&ndash; Progress bar 4 &ndash;&gt;-->
+<!--  <div class="stat-container">-->
+<!--    <div class="progress-bar-header">-->
+<!--      <span>Vue/Nuxt</span>-->
+<!--      <span>85 %</span>-->
+<!--    </div>-->
+<!--    &lt;!&ndash; Progress bar &ndash;&gt;-->
+<!--    <div class="progress-bar">-->
+<!--      <div class="progress-bar-fill w-[85%]"></div>-->
+<!--    </div>-->
+<!--  </div>-->
 
-  <!-- Progress bar 4 -->
-  <div class="stat-container">
-    <div class="progress-bar-header">
-      <span>Nestjs</span>
-      <span>70 %</span>
+<!--  &lt;!&ndash; Progress bar 4 &ndash;&gt;-->
+<!--  <div class="stat-container">-->
+<!--    <div class="progress-bar-header">-->
+<!--      <span>Nestjs</span>-->
+<!--      <span>70 %</span>-->
+<!--    </div>-->
+<!--    &lt;!&ndash; Progress bar &ndash;&gt;-->
+<!--    <div class="progress-bar">-->
+<!--      <div class="progress-bar-fill w-[70%] "></div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</section>-->
+<section>
+  <h1 class="text-3xl mx-20 font-medium text-maintone tracking-widest">Course</h1>
+  <article>
+    <div>
+      <h2>Software Developer FETAC 5 <button (click)="clickedFetac(true)">See More</button></h2>
     </div>
-    <!-- Progress bar -->
-    <div class="progress-bar">
-      <div class="progress-bar-fill w-[70%] "></div>
+    <ul *ngIf="isClickedFetac">
+      <li *ngFor="let course of coursesFetac">
+        <div>
+          <h3>{{course}}</h3>
+          <h4>{{fetacGrade}}</h4>
+        </div>
+      </li>
+    </ul>
+    <button *ngIf="isClickedFetac" (click)="clickedFetac(false)">See Less</button>
+  </article>
+
+  <article>
+    <div>
+      <h2>Business Computing 1st Year <button (click)="Clicked1stYear(true)">See More</button></h2>
     </div>
-  </div>
+    <ul *ngIf="isClicked1stYear">
+      <li *ngFor="let course of bc1stYear; let i=index">
+        <div>
+          <h3>{{course}}</h3>
+          <h4 >{{bcOneGrades[i].num}}</h4>
+        </div>
+      </li>
+    </ul>
+    <button *ngIf="isClicked1stYear" (click)="Clicked1stYear(false)">See Less</button>
+  </article>
+
 </section>
-<h1>Based on Pluralsight</h1>
+

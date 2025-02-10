@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes, ExtraOptions } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { QuizComponent} from './quiz/quizapp/quizapp.component';
-import {TimelineComponent} from './development-map/timeline/timeline.component';
-import {LearnComponent} from './learn/learn.component';
-import {ContactComponent} from './contact/contact.component';
-import {PortfolioComponent} from './developer/portfolio/portfolio.component';
+import { TimelineComponent } from './development-map/timeline/timeline.component';
+import { LearnComponent } from './learn/learn.component';
+import { ContactComponent } from './contact/contact.component';
+import { PortfolioComponent } from './developer/portfolio/portfolio.component';
 
 export const routes: Routes = [
   {path: '', component: HomeComponent},
