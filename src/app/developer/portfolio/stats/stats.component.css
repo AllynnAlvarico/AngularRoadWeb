@@ -11,15 +11,19 @@ progress-bar-header {
   @apply w-full bg-gray-300 rounded-full h-4;
 }
 .progress-bar-fill {
-  @apply h-4 bg-blue-500 rounded-full text-center text-xs text-white ;
+  @apply h-4 bg-blue-500 rounded-full text-center text-xs text-white;
 }
 
 article {
-  @apply my-3 border-black border-2;
+  @apply my-10 border-black;
 }
 
 h2 {
   @apply text-lg font-bold;
+}
+
+h3 {
+  @apply font-bold ml-11;
 }
 button {
   @apply bg-blue-600 rounded-2xl text-white font-bold p-1.5 text-sm;

@@ -62,6 +62,7 @@ export class StatsComponent {
     {num:78},{num:61},
     {num:72},{num:68},
     {num:74},{num:56}];
+
   bcTwoGrades = [
       {num:55}, {num:0},
     {num:87},{num:0},
@@ -69,11 +70,12 @@ export class StatsComponent {
     {num:51},{num:0},
     {num:73},{num:0},
     {num:0},{num:57}];
+  // private i: number = 0;
+
 
   clickedFetac(state:boolean):void {
     this.isClickedFetac = state;
   }
-
   Clicked1stYear(state:boolean):void {
     this.isClicked1stYear = state;
   }

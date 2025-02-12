@@ -14,6 +14,9 @@ export class DefaultComponent implements OnInit {
   /** Debugging switch */
   debuggerSwitch: boolean = false;
 
+  roadData = new RoadData();
+  allSigns = this.roadData.getData();
+
   /** Quiz properties */
   mcqOptions: string[] = [];
   currentQuestionIndex = 0;
@@ -33,12 +36,11 @@ export class DefaultComponent implements OnInit {
   }
 
   startQuiz(): void {
-    const roadData = new RoadData();
-    const allSigns = roadData.getData();
-    const currentSign = allSigns[this.currentQuestionIndex];
+
+    const currentSign = this.allSigns[this.currentQuestionIndex];
 
     const incorrectOptions = this.shuffleArray(
-      allSigns.filter(sign => sign.title !== currentSign.title)
+      this.allSigns.filter(sign => sign.title !== currentSign.title)
     ).slice(0, 3);
 
     this.mcqOptions = this.shuffleArray([currentSign, ...incorrectOptions])
@@ -70,4 +72,15 @@ export class DefaultComponent implements OnInit {
   private shuffleArray<T>(array: T[]): T[] {
     return array.sort(() => Math.random() - 0.5);
   }
+
+  nextQuestion() {
+    this.currentQuestionIndex++;
+    if (this.currentQuestionIndex >= this.allSigns.length) {
+      alert('Quiz Completed!');
+      // quizContainer.style.display = 'none';
+    } else {
+      // displayQuestion();
+    }
+  }
+
 }
