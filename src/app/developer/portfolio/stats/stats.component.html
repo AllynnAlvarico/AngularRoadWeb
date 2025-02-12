@@ -107,14 +107,48 @@
       </div>
     </div>
     <ul *ngIf="isClicked1stYear">
-      <li *ngFor="let course of bc1stYear; let i=index">
+      <li *ngFor="let course of bc1stYear; let i=index;">
         <div>
           <h3>{{ course }}</h3>
           <div class="w-4/5 my-2">
             <!-- Progress bar -->
             <div class="progress-bar">
-              <div class="progress-bar-fill w-[{{bcOneGrades[i].num}}%]" >
+              <div class="progress-bar-fill" [ngStyle]="{'width': bcOneGrades[i].num + '%'}" >
                 Grade: {{bcOneGrades[i].num}}%
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+
+  </article>
+
+  <article>
+    <div>
+      <h2 class="flex justify-evenly">
+        Business Computing 2nd Year
+        <button *ngIf="!isClicked2ndYear" (click)="Clicked2ndYear(true)">See More</button>
+        <button *ngIf="isClicked2ndYear" (click)="Clicked2ndYear(false)">See Less</button>
+      </h2>
+      <div class="w-4/5 my-2">
+        <!-- Progress bar -->
+        <div class="progress-bar">
+          <div class="progress-bar-fill w-[100%]">
+            Average: Not Yet Determined %
+          </div>
+        </div>
+      </div>
+    </div>
+    <ul *ngIf="isClicked2ndYear">
+      <li *ngFor="let course of bc2ndYear; let i=index;">
+        <div>
+          <h3>{{ course }}</h3>
+          <div class="w-4/5 my-2">
+            <!-- Progress bar -->
+            <div class="progress-bar">
+              <div class="progress-bar-fill" [ngStyle]="{'width': bcTwoGrades[i].num + '%'}" >
+                Grade: {{bcTwoGrades[i].num}}%
               </div>
             </div>
           </div>
