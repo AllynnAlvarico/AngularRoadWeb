@@ -13,9 +13,10 @@ import {data} from 'autoprefixer';
 })
 export class DefaultComponent implements OnInit {
   /** Debugging switch */
-  debuggerSwitch: boolean = false;
+  debuggerSwitch: boolean = true;
 
-  currentSign:any;
+  currentSign: any;
+  incorrectOptions: any;
   roadData = new RoadData();
   allSigns = this.roadData.getData();
 
@@ -31,32 +32,30 @@ export class DefaultComponent implements OnInit {
   correctAnswer: string = '';
   score = 0;
 
-  constructor(private sharedData: QuizComponent) {
-  }
+  constructor(private sharedData: QuizComponent) {}
 
   ngOnInit(): void {
     this.startQuiz();
-
   }
 
   startQuiz(): void {
     this.sharedData.currentIndexData.subscribe(data => {
       this.currentQuestionIndex = data;
+      console.log("the sent data is: " + data);
+      this.currentSign = this.allSigns[this.currentQuestionIndex];
+      console.log(this.currentSign.title);
+
+      this.incorrectOptions = this.shuffleArray(
+        this.allSigns.filter(sign => sign.title !== this.currentSign.title)
+      ).slice(0, 3);
+
+      this.mcqOptions = this.shuffleArray([this.currentSign, ...this.incorrectOptions])
+        .map(option => option.title);
+
+      this.correctAnswer = this.currentSign.title;
+      this.imageSource = this.currentSign.asset_source;
+      this.imageName = this.currentSign.title;
     });
-
-    this.currentSign = this.allSigns[this.currentQuestionIndex];
-
-    const incorrectOptions = this.shuffleArray(
-      this.allSigns.filter(sign => sign.title !== this.currentSign.title)
-    ).slice(0, 3);
-
-    this.mcqOptions = this.shuffleArray([this.currentSign, ...incorrectOptions])
-      .map(option => option.title);
-
-    this.correctAnswer = this.currentSign.title;
-    this.imageSource = this.currentSign.asset_source;
-    this.imageName = this.currentSign.title;
-
   }
 
   processAnswer(selected: string): void {
