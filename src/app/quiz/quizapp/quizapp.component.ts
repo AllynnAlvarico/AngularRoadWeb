@@ -26,6 +26,8 @@ import {RouterLink} from '@angular/router';
 export class QuizComponent {
   private dataSource = new BehaviorSubject<number>(0);
   currentData = this.dataSource.asObservable();
+  private indexQuestion = new BehaviorSubject<number>(0);
+  currentIndexData = this.dataSource.asObservable();
 
   isDefaultMode = true;
   isClicked = false;
@@ -36,6 +38,9 @@ export class QuizComponent {
   }
   updateDate(newScoreData:number){
     this.dataSource.next(newScoreData);
+  }
+  updateQuestionIndex(newIndexQuestion:number):void {
+    this.dataSource.next(newIndexQuestion);
   }
 
   test(): void {

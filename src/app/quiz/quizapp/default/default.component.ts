@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { RoadData } from '../road-signs';
-import { JsonPipe, NgClass, NgForOf, NgIf, NgOptimizedImage } from "@angular/common";
-import { QuizComponent } from '../quizapp.component';
+import {Component, OnInit} from '@angular/core';
+import {RoadData} from '../road-signs';
+import {JsonPipe, NgClass, NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
+import {QuizComponent} from '../quizapp.component';
+import {data} from 'autoprefixer';
 
 @Component({
   selector: 'app-default',
@@ -14,6 +15,7 @@ export class DefaultComponent implements OnInit {
   /** Debugging switch */
   debuggerSwitch: boolean = false;
 
+  currentSign:any;
   roadData = new RoadData();
   allSigns = this.roadData.getData();
 
@@ -29,28 +31,32 @@ export class DefaultComponent implements OnInit {
   correctAnswer: string = '';
   score = 0;
 
-  constructor(private sharedData: QuizComponent) {}
+  constructor(private sharedData: QuizComponent) {
+  }
 
   ngOnInit(): void {
     this.startQuiz();
+
   }
 
   startQuiz(): void {
+    this.sharedData.currentIndexData.subscribe(data => {
+      this.currentQuestionIndex = data;
+    });
 
-    const currentSign = this.allSigns[this.currentQuestionIndex];
+    this.currentSign = this.allSigns[this.currentQuestionIndex];
 
     const incorrectOptions = this.shuffleArray(
-      this.allSigns.filter(sign => sign.title !== currentSign.title)
+      this.allSigns.filter(sign => sign.title !== this.currentSign.title)
     ).slice(0, 3);
 
-    this.mcqOptions = this.shuffleArray([currentSign, ...incorrectOptions])
+    this.mcqOptions = this.shuffleArray([this.currentSign, ...incorrectOptions])
       .map(option => option.title);
 
-    this.correctAnswer = currentSign.title;
-    this.imageSource = currentSign.asset_source;
-    this.imageName = currentSign.title;
+    this.correctAnswer = this.currentSign.title;
+    this.imageSource = this.currentSign.asset_source;
+    this.imageName = this.currentSign.title;
 
-    this.currentQuestionIndex++;
   }
 
   processAnswer(selected: string): void {
@@ -62,6 +68,7 @@ export class DefaultComponent implements OnInit {
       this.score++;
       this.sendScoreData();
       console.log("Correct answer!");
+      // console.log("Current Sign: " + this.currentSign);
     }
   }
 
@@ -71,16 +78,6 @@ export class DefaultComponent implements OnInit {
 
   private shuffleArray<T>(array: T[]): T[] {
     return array.sort(() => Math.random() - 0.5);
-  }
-
-  nextQuestion() {
-    this.currentQuestionIndex++;
-    if (this.currentQuestionIndex >= this.allSigns.length) {
-      alert('Quiz Completed!');
-      // quizContainer.style.display = 'none';
-    } else {
-      // displayQuestion();
-    }
   }
 
 }

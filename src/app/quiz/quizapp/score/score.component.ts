@@ -11,6 +11,7 @@ import {data} from 'autoprefixer';
 })
 export class ScoreComponent implements OnInit {
   receiveScore: number = 0;
+  sendQuestionIndex:number = 0;
   tester: any = null;
 
   constructor(private sharedData: QuizComponent) {
@@ -20,15 +21,26 @@ export class ScoreComponent implements OnInit {
     this.sharedData.currentData.subscribe(data => {
       this.receiveScore = data;
     });
-    this.sharedData.currentData.subscribe(data => {
-      this.tester = data;
-    });
   }
+
+  sendQuestionIndexData(){
+    this.sharedData.updateQuestionIndex(this.sendQuestionIndex);
+  }
+
 
   getScore(): number {
     return this.receiveScore;
   }
 
+  nextQuestion() {
+    // this.allSigns.length
+    this.sendQuestionIndex++;
+    this.sendQuestionIndexData();
+    if (this.sendQuestionIndex >= 252) {
+      alert('Quiz Completed!');
+    }
+    // console.log(this.sendQuestionIndex);
+  }
   test(): any {
     return this.tester;
   }
