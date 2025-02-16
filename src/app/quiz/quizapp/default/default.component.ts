@@ -13,7 +13,7 @@ import {data} from 'autoprefixer';
 })
 export class DefaultComponent implements OnInit {
   /** Debugging switch */
-  debuggerSwitch: boolean = true;
+  debuggerSwitch: boolean = false;
 
   currentSign: any;
   incorrectOptions: any;
@@ -23,6 +23,7 @@ export class DefaultComponent implements OnInit {
   /** Quiz properties */
   mcqOptions: string[] = [];
   currentQuestionIndex = 0;
+  questionNumber = 0;
   imageSource: string = '';
   imageName: string = '';
   question: string = 'What does this sign mean?';
@@ -40,22 +41,29 @@ export class DefaultComponent implements OnInit {
 
   startQuiz(): void {
     this.sharedData.currentIndexData.subscribe(data => {
-      this.currentQuestionIndex = data;
-      console.log("the sent data is: " + data);
-      this.currentSign = this.allSigns[this.currentQuestionIndex];
-      console.log(this.currentSign.title);
-
-      this.incorrectOptions = this.shuffleArray(
-        this.allSigns.filter(sign => sign.title !== this.currentSign.title)
-      ).slice(0, 3);
-
-      this.mcqOptions = this.shuffleArray([this.currentSign, ...this.incorrectOptions])
-        .map(option => option.title);
-
-      this.correctAnswer = this.currentSign.title;
-      this.imageSource = this.currentSign.asset_source;
-      this.imageName = this.currentSign.title;
+      this.loadQuestions(data);
     });
+  }
+  loadQuestions(resData:number){
+
+    this.currentQuestionIndex = resData;
+    this.questionNumber = resData + 1;
+
+    this.currentQuestionIndex = Math.floor(Math.random() * this.allSigns.length);
+
+    this.currentSign = this.allSigns[this.currentQuestionIndex];
+
+    this.incorrectOptions = this.shuffleArray(
+      this.allSigns.filter(sign => sign.title !== this.currentSign.title)
+    ).slice(0, 3);
+
+    this.mcqOptions = this.shuffleArray([this.currentSign, ...this.incorrectOptions])
+      .map(option => option.title);
+
+    this.correctAnswer = this.currentSign.title;
+    this.imageSource = this.currentSign.asset_source;
+    this.imageName = this.currentSign.title;
+
   }
 
   processAnswer(selected: string): void {
@@ -66,9 +74,17 @@ export class DefaultComponent implements OnInit {
     if (this.selectedAnswer === this.correctAnswer) {
       this.score++;
       this.sendScoreData();
-      console.log("Correct answer!");
-      // console.log("Current Sign: " + this.currentSign);
+      console.log("Correct answer!")
     }
+  }
+
+  resetButtons(option:any):string{
+    if(this.selectedAnswer !== null && option === this.correctAnswer){
+      return "correct";
+    }else if (this.selectedAnswer !== null && option !== this.correctAnswer){
+      return "incorrect";
+    }
+    return "reset";
   }
 
   sendScoreData(): void {
