@@ -24,6 +24,7 @@ export class DefaultComponent implements OnInit {
   mcqOptions: string[] = [];
   currentQuestionIndex = 0;
   questionNumber = 0;
+  btnStyle:string = '';
   imageSource: string = '';
   imageName: string = '';
   question: string = 'What does this sign mean?';
@@ -67,18 +68,18 @@ export class DefaultComponent implements OnInit {
   }
 
   processAnswer(selected: string): void {
-    if (this.selectedAnswer) return;
-
     this.selectedAnswer = selected;
 
     if (this.selectedAnswer === this.correctAnswer) {
       this.score++;
       this.sendScoreData();
+      this.btnStyle = this.resetButtons(selected);
       console.log("Correct answer!")
     }
   }
 
   resetButtons(option:any):string{
+    // return "reset";
     if(this.selectedAnswer !== null && option === this.correctAnswer){
       return "correct";
     }else if (this.selectedAnswer !== null && option !== this.correctAnswer){
