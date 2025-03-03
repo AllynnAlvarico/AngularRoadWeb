@@ -9,7 +9,7 @@
 
     <!-- Hamburger menu (for mobile) -->
     <div class="flex md:hidden">
-      <button id="hamburger" class="text-white focus:outline-none">
+      <button id="hamburger" class="text-white focus:outline-none" (click)="menuPop(true)">
         <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
         </svg>
@@ -37,7 +37,7 @@
 </header>
 
 <!-- Mobile menu -->
-<nav id="mobile-menu-placeholder" class="mobile-menu hidden flex-col items-center space-y-8 md:hidden px-8">
+<nav id="mobile-menu-placeholder" class="mobile-menu flex-col items-center space-y-8 md:hidden px-8" *ngIf="mobileMenuPop">
   <ul class="w-full text-center">
     <li class="border-b border-gray-300 pb-4 pt-4"><a routerLink="/home" class="hover:text-secondary font-bold">Home</a></li>
     <li class="border-b border-gray-300 pb-4 pt-4"><a routerLink="/learn" class="hover:text-secondary font-bold">Learn</a></li>

@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {RoadData} from '../road-signs';
 import {JsonPipe, NgClass, NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
 import {QuizComponent} from '../quizapp.component';
-import {data} from 'autoprefixer';
 
 @Component({
   selector: 'app-default',
@@ -24,7 +23,6 @@ export class DefaultComponent implements OnInit {
   mcqOptions: string[] = [];
   currentQuestionIndex = 0;
   questionNumber = 0;
-  btnStyle: string = '';
   imageSource: string = '';
   imageName: string = '';
   question: string = 'What does this sign mean?';
@@ -40,7 +38,6 @@ export class DefaultComponent implements OnInit {
 
   ngOnInit(): void {
     this.startQuiz();
-    // this.resetUI();
   }
 
   startQuiz(): void {
@@ -50,7 +47,7 @@ export class DefaultComponent implements OnInit {
   }
 
   loadQuestions(resData: number) {
-    this.selectedAnswer = null;
+    this.resetUI();
 
     this.currentQuestionIndex = resData;
     this.questionNumber = resData + 1;
@@ -84,6 +81,7 @@ export class DefaultComponent implements OnInit {
   }
 
   // this method needs to be debug!
+  // This Bug was fixed on 03/03/2025 -- Caused a headache for 2 months
   resetButtons(option: any): string {
     if (this.selectedAnswer == null) {
       return "reset";
@@ -103,7 +101,8 @@ export class DefaultComponent implements OnInit {
     return array.sort(() => Math.random() - 0.5);
   }
 
-  // resetUI(): void {
-  //   this.selectedAnswer = null;
-  // }
+  resetUI(): void {
+    this.selectedAnswer = null;
+    this.isAnswered = false;
+  }
 }

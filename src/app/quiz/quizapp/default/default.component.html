@@ -6,9 +6,10 @@
     <button
       *ngFor="let option of mcqOptions;"
       (click)="processAnswer(option)"
-      [ngClass]="resetButtons(option)">
+      [ngClass]="resetButtons(option)"
+      [disabled]="isAnswered">
       {{ option }}</button>
-<!--    [disabled]="selectedAnswer"-->
+
   </div>
 
   <div *ngIf="debuggerSwitch">
