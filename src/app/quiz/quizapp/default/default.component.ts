@@ -24,7 +24,7 @@ export class DefaultComponent implements OnInit {
   mcqOptions: string[] = [];
   currentQuestionIndex = 0;
   questionNumber = 0;
-  btnStyle:string = '';
+  btnStyle: string = '';
   imageSource: string = '';
   imageName: string = '';
   question: string = 'What does this sign mean?';
@@ -35,7 +35,8 @@ export class DefaultComponent implements OnInit {
   score = 0;
   isAnswered: boolean = false;
 
-  constructor(private sharedData: QuizComponent) {}
+  constructor(private sharedData: QuizComponent) {
+  }
 
   ngOnInit(): void {
     this.startQuiz();
@@ -47,7 +48,8 @@ export class DefaultComponent implements OnInit {
       this.loadQuestions(data);
     });
   }
-  loadQuestions(resData:number){
+
+  loadQuestions(resData: number) {
     this.selectedAnswer = null;
 
     this.currentQuestionIndex = resData;
@@ -76,23 +78,21 @@ export class DefaultComponent implements OnInit {
 
     if (this.selectedAnswer === this.correctAnswer) {
       this.score++;
-      this.sendScoreData();
-      console.log("Correct answer!");
+      // this.sendScoreData(); -> modified it stops going to next question - 03/03/2025
+      // console.log("Correct answer!");
     }
   }
 
   // this method needs to be debug!
-  resetButtons(option:any):string{
-
-    if (this.selectedAnswer === null) {
+  resetButtons(option: any): string {
+    if (this.selectedAnswer == null) {
       return "reset";
     }
-    if (this.selectedAnswer === option && option === this.correctAnswer) {
+    if (option === this.correctAnswer) {
       return "correct";
-    } else if (this.selectedAnswer === option) {
+    } else {
       return "incorrect";
     }
-    return "reset";
   }
 
   sendScoreData(): void {
@@ -102,6 +102,7 @@ export class DefaultComponent implements OnInit {
   private shuffleArray<T>(array: T[]): T[] {
     return array.sort(() => Math.random() - 0.5);
   }
+
   // resetUI(): void {
   //   this.selectedAnswer = null;
   // }
