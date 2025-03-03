@@ -33,11 +33,13 @@ export class DefaultComponent implements OnInit {
   selectedAnswer: string | null = null;
   correctAnswer: string = '';
   score = 0;
+  isAnswered: boolean = false;
 
   constructor(private sharedData: QuizComponent) {}
 
   ngOnInit(): void {
     this.startQuiz();
+    // this.resetUI();
   }
 
   startQuiz(): void {
@@ -46,6 +48,7 @@ export class DefaultComponent implements OnInit {
     });
   }
   loadQuestions(resData:number){
+    this.selectedAnswer = null;
 
     this.currentQuestionIndex = resData;
     this.questionNumber = resData + 1;
@@ -69,20 +72,24 @@ export class DefaultComponent implements OnInit {
 
   processAnswer(selected: string): void {
     this.selectedAnswer = selected;
+    this.isAnswered = true;
 
     if (this.selectedAnswer === this.correctAnswer) {
       this.score++;
       this.sendScoreData();
-      this.btnStyle = this.resetButtons(selected);
-      console.log("Correct answer!")
+      console.log("Correct answer!");
     }
   }
 
+  // this method needs to be debug!
   resetButtons(option:any):string{
-    // return "reset";
-    if(this.selectedAnswer !== null && option === this.correctAnswer){
+
+    if (this.selectedAnswer === null) {
+      return "reset";
+    }
+    if (this.selectedAnswer === option && option === this.correctAnswer) {
       return "correct";
-    }else if (this.selectedAnswer !== null && option !== this.correctAnswer){
+    } else if (this.selectedAnswer === option) {
       return "incorrect";
     }
     return "reset";
@@ -95,5 +102,7 @@ export class DefaultComponent implements OnInit {
   private shuffleArray<T>(array: T[]): T[] {
     return array.sort(() => Math.random() - 0.5);
   }
-
+  // resetUI(): void {
+  //   this.selectedAnswer = null;
+  // }
 }

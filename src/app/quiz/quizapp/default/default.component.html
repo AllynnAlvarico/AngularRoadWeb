@@ -2,11 +2,11 @@
   <h1 id="quiz-heading">Question {{questionNumber}}</h1>
   <h2 class="question" id="question-text">{{question}}</h2>
   <img [alt]="imageName" src="{{imageSource}}"/>
-  <div class="options" id="options-container">
+  <div id="options-container">
     <button
       *ngFor="let option of mcqOptions;"
       (click)="processAnswer(option)"
-      [ngClass]="resetButtons(option)">
+      [class]=" resetButtons(option)">
       {{ option }}</button>
 <!--    [disabled]="selectedAnswer"-->
   </div>
