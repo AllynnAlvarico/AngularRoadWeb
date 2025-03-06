@@ -34,7 +34,7 @@ export class ScoreComponent implements OnInit {
 
   nextQuestion() {
     // this.allSigns.length
-    this.sendQuestionIndex++;
+    // this.sendQuestionIndex++;
     this.sendQuestionIndexData();
     if (this.sendQuestionIndex >= 252) {
       alert('Quiz Completed!');

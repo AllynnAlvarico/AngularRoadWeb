@@ -75,7 +75,8 @@ export class DefaultComponent implements OnInit {
 
     if (this.selectedAnswer === this.correctAnswer) {
       this.score++;
-      // this.sendScoreData(); -> modified it stops going to next question - 03/03/2025
+      // this.sendScoreData();
+      // -> modified it stops going to next question - 03/03/2025
       // console.log("Correct answer!");
     }
   }
@@ -95,6 +96,10 @@ export class DefaultComponent implements OnInit {
 
   sendScoreData(): void {
     this.sharedData.updateDate(this.score);
+  }
+
+  sendIsAnswered(state:boolean):void {
+    this.sharedData.updateAnswer(state);
   }
 
   private shuffleArray<T>(array: T[]): T[] {
